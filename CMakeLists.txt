@@ -15,3 +15,4 @@ endfunction()
 
 create(day1)
 create(day2)
+create(day3)
