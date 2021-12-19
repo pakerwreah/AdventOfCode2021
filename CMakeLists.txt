@@ -11,8 +11,17 @@ function(create day)
         ${CMAKE_SOURCE_DIR}/${day}/${day}.txt
         ${CMAKE_CURRENT_BINARY_DIR}/${day}.txt
     )
+    if (EXISTS ${CMAKE_SOURCE_DIR}/${day}/${day}-mock.txt)
+        add_custom_command(
+            TARGET ${day} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy
+            ${CMAKE_SOURCE_DIR}/${day}/${day}-mock.txt
+            ${CMAKE_CURRENT_BINARY_DIR}/${day}-mock.txt
+        )
+    endif ()
 endfunction()
 
 create(day1)
 create(day2)
 create(day3)
+create(day4)
